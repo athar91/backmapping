@@ -2,7 +2,7 @@
 #update backmapped.top, update info there, add lig here, in backmapped.top 
 #FOR Protein only, no need to run any further commands 
 cp ~/Downloads/backmap/WORKED/*.mdp . #needs previous .mdp files
-sed -i "s/;1K8/1K8/g" backmapped.top 
+sed -i "s/;1K8/1K8/g" backmapped.top #add ligand name in new .top file
 gmx_mpi grompp -f 1-EM.mdp -c 0-backward.gro -n backmapped.ndx -p backmapped.top -o 1-EM -maxwarn 2 
 gmx_mpi mdrun -deffnm 1-EM -v -nt 0 
 gmx_mpi grompp -f 2-EM.mdp -c 1-EM.gro -n backmapped.ndx -p backmapped.top -o 2-EM -maxwarn 2 
